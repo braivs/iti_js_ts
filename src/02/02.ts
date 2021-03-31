@@ -1,10 +1,10 @@
-type CityType = {
+type LocalCityType = {
   title: string
   countryTitle: string
 }
-type AdressType = {
+type AddressType = {
   streetTitle: string
-  city: CityType
+  city: LocalCityType
 }
 type TechType = {
   id: number
@@ -15,7 +15,7 @@ type StudentType = {
   name: string
   age: number
   isActive: boolean
-  address: AdressType
+  address: AddressType
   technologies: Array<TechType>
 }
 
