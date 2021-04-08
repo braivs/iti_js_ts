@@ -39,13 +39,13 @@ test('', () => {
 
   /*const [ls1] = props.lessons; // только 1-й элемент
   const [,ls2] = props.lessons; // только 2-й */
-  const [ls1, ...restLessons] = props.lessons;
+  const [,ls2, ...restLessons] = props.lessons;
 
   expect(l1.title).toBe('1')
   expect(l2.title).toBe('2')
 
   // expect(ls1.title).toBe('1')
-  expect(ls1.title).toBe('1')
-  expect(restLessons.length).toBe(2)
-  expect(restLessons[0].title).toBe('2')
+  expect(ls2.title).toBe('2')
+  expect(restLessons.length).toBe(1)
+  expect(restLessons[0].title).toBe('3')
 })
