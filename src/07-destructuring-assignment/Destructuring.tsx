@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 export type ManType = {
   name: string
   age: number
@@ -17,8 +17,20 @@ type PropsType = {
   car: {model: string}
 }
 
+function useDimychState(message: string) {
+  return [m, function (){}]
+}
+
+function useDimychState2(message: string) {
+  return {
+    message: m,
+    setMessage: function (){}}
+}
+
 export const ManComponent: React.FC<PropsType> = ({title, man, ...props}) => {
   // const {title, man, ...restProps} = props;
+
+  const [message, setMessage] = useState('hello')
 
   return <div>
     <h1>{title}</h1>
