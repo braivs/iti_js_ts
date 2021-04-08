@@ -182,6 +182,6 @@ var mySofa:mySofaType = {
   whatInside: ['Постельное бельё', 'Подушки для сна']
 }
 
-
+export {}
 
 
