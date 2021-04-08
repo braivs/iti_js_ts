@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {ChangeEvent, MouseEvent} from 'react'
 
 /*const callbeck = (): number => {
   alert('hey')
@@ -8,16 +8,25 @@ window.setTimeout(callbeck,1000)*/
 
 export const User = () => {
 
-  const deleteUser = () => {
-    alert('user have been deleted');
+  const search = (event: MouseEvent<HTMLButtonElement>) => {
+    alert(event.currentTarget.name);
   }
 
-  const saveUser = () => {
-    alert('user have been saved');
+  const onNameChanged = () => {
+    console.log('name changed');
+  }
+  const onAgeChanged = (event: ChangeEvent<HTMLInputElement>) => {
+    console.log('age changed: ' + event.currentTarget.value);
   }
 
-  return <div>Dimich
-    <button onClick={deleteUser}>delete</button>
-    <button onClick={saveUser}>save</button>
+  const focusLostHandler = () => {
+    console.log('focus lost');
+  }
+
+  return <div>
+    <textarea onChange={onNameChanged} onBlur={focusLostHandler}>Dimich</textarea>
+    <input onChange={onAgeChanged} type={'number'}/>
+
+    <button name='search' tabIndex={1} onClick={search}>search</button>
   </div>
 }
