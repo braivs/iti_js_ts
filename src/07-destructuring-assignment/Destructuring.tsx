@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 export type ManType = {
   name: string
   age: number
-  lessons: Array<{title: string}>
+  lessons: Array<{title: string; name?: string}>
   address: {
     street: {
       title: string
