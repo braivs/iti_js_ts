@@ -3,7 +3,7 @@ import {Simulate} from 'react-dom/test-utils';
 export type UserType = {
   name: string
   hair: number
-  address: {city: string, house?: number}
+  address: { city: string, house?: number }
 }
 export type LaptopType = {
   title: string
@@ -28,7 +28,7 @@ export function makeHairStyle(u: UserType, power: number) {
 export function moveUser(u: UserWithLaptopType, city: string) {
   return {
     ...u,
-    address : {
+    address: {
       ...u.address,
       city: city
     }
@@ -38,7 +38,7 @@ export function moveUser(u: UserWithLaptopType, city: string) {
 export function moveUserToOtherHouse(u: UserWithLaptopType & UserWithBooksType, house: number) {
   return {
     ...u,
-    address : {
+    address: {
       ...u.address,
       house: house
     }
@@ -48,7 +48,7 @@ export function moveUserToOtherHouse(u: UserWithLaptopType & UserWithBooksType, 
 export function upgradeUserLaptop(u: UserWithLaptopType, laptop: string) {
   return {
     ...u,
-    laptop : {
+    laptop: {
       ...u.laptop,
       title: laptop
     }
@@ -62,13 +62,14 @@ export function addNewBooksToUser(u: UserWithLaptopType & UserWithBooksType, new
   }
 }
 
-export function updateBook(u: UserWithLaptopType & UserWithBooksType, findEl, newEl) {
+export function updateBook(u: UserWithLaptopType & UserWithBooksType,
+                           oldBook: string,
+                           newBook: string) {
   const copy = {
     ...u,
-    books: [...u.books]
+    books: u.books.map(b => (b === oldBook) ? newBook : b)
   }
-  const index = copy.books.findIndex(t => t === findEl);
-  copy.books[index] = newEl;
+
   return copy;
 }
 
