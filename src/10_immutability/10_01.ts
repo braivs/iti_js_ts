@@ -1,7 +1,7 @@
 export type UserType = {
   name: string
   hair: number
-  address: {title: string}
+  address: {city: string, house?: number}
 }
 export type LaptopType = {
   title: string
@@ -20,8 +20,14 @@ export function makeHairStyle(u: UserType, power: number) {
 }
 
 export function moveUser(u: UserWithLaptopType, city: string) {
-  let copy = { ...u }
-  copy.address = {...u.address}
-  copy.address.title = city;
+  let copy = {
+    ...u
+  }
+
+  copy.address = {
+    ...u.address,
+    city: city
+  }
+
   return copy
 }

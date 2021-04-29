@@ -7,7 +7,7 @@ test('reference type test', () => {
     name: 'Briws',
     hair: 32,
     address: {
-      title: 'Querim'
+      city: 'Querim'
     }
   }
 
@@ -25,7 +25,8 @@ test('change address', () => {
     name: 'Briws',
     hair: 32,
     address: {
-      title: 'Querim'
+      city: 'Querim',
+      house: 12
     },
     laptop: {
       title: 'ZenBook'
@@ -34,10 +35,8 @@ test('change address', () => {
 
   const movedUser = moveUser(user, 'Querim')
 
-  // user = movedUser;
-
   expect(user).not.toBe(movedUser)
   expect(user.address).not.toBe(movedUser.address)
   expect(user.laptop).toBe(movedUser.laptop)
-  expect(movedUser.address.title).toBe('Querim')
+  expect(movedUser.address.city).toBe('Querim')
 })
