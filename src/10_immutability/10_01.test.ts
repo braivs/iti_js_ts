@@ -2,7 +2,7 @@ import {
   addNewBooksToUser,
   makeHairStyle,
   moveUser,
-  moveUserToOtherHouse, updateBook,
+  moveUserToOtherHouse, updateBook, updateSkill,
   upgradeUserLaptop,
   UserType,
   UserWithBooksType,
@@ -141,4 +141,23 @@ test('update js to ts', () => {
   expect(user.books).not.toBe(userCopy.books)
   expect(userCopy.books[2]).toBe('ts')
   expect(user.books.length).toBe(4)
+})
+
+test('update skill level', () => {
+  let user: UserWithSkillsType = {
+    name: 'Briws',
+    hair: 32,
+    address: {
+      city: 'Querim',
+      house: 12
+    },
+    skills: ['80%', '35%', '47%', '100%']
+  }
+
+  const userCopy = updateSkill(user, '35%', '55%')
+
+  expect(user).not.toBe(userCopy)
+  expect(user.skills).not.toBe(userCopy.skills)
+  expect(userCopy.skills[1]).toBe('55%')
+  expect(user.skills.length).toBe(4)
 })

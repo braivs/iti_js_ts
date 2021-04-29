@@ -14,6 +14,12 @@ export type UserWithBooksType = UserType & {
   books: Array<string>
 }
 
+export type UserWithSkillsType = UserType & {
+  skills: Array<string>
+}
+
+
+
 export function makeHairStyle(u: UserType, power: number) {
   const copy = {
     ...u,
@@ -65,6 +71,13 @@ export const updateBook = (u: UserWithLaptopType & UserWithBooksType,
                            newBook: string) => ({
     ...u,
     books: u.books.map(b => (b === oldBook) ? newBook : b)
+})
+
+export const updateSkill = (u: UserWithSkillsType,
+                           oldSkill: string,
+                           newSkill: string) => ({
+  ...u,
+  skills: u.skills.map(b => (b === oldSkill) ? newSkill : b)
 })
 
 /*
