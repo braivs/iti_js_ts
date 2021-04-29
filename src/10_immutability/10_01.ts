@@ -80,6 +80,14 @@ export const updateSkill = (u: UserWithSkillsType,
   skills: u.skills.map(b => (b === oldSkill) ? newSkill : b)
 })
 
+export function removeBook(u: UserWithLaptopType & UserWithBooksType,
+                           bookToRemove: string) {
+  return {
+    ...u,
+    books: u.books.filter(b => b !== bookToRemove)
+  }
+}
+
 
 
 

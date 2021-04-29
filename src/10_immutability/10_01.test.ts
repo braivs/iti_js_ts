@@ -2,7 +2,7 @@ import {
   addNewBooksToUser,
   makeHairStyle,
   moveUser,
-  moveUserToOtherHouse, updateBook, updateSkill,
+  moveUserToOtherHouse, removeBook, updateBook, updateSkill,
   upgradeUserLaptop,
   UserType,
   UserWithBooksType,
