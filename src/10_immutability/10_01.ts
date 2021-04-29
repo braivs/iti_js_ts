@@ -10,6 +10,10 @@ export type UserWithLaptopType = UserType & {
   laptop: LaptopType
 }
 
+export type UserWithBooksType = UserType & {
+  books: Array<string>
+}
+
 export function makeHairStyle(u: UserType, power: number) {
   const copy = {
     ...u,
@@ -27,19 +31,27 @@ export function moveUser(u: UserWithLaptopType, city: string) {
       city: city
     }
   }
-
-/*  copy.address = {
-    ...u.address,
-    city: city
-  }*/
 }
 
-export function upgradeUserLaptop(u: UserWithLaptopType, laptopTitle: string) {
+export function moveUserToOtherHouse(u: UserWithLaptopType & UserWithBooksType, house: number) {
+  return {
+    ...u,
+    address : {
+      ...u.address,
+      house: house
+    }
+  }
+}
+
+export function upgradeUserLaptop(u: UserWithLaptopType, laptop: string) {
   return {
     ...u,
     laptop : {
       ...u.laptop,
-      title: laptopTitle
+      title: laptop
     }
   }
 }
+
+
+
