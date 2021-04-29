@@ -6,7 +6,7 @@ import {
   upgradeUserLaptop,
   UserType,
   UserWithBooksType,
-  UserWithLaptopType
+  UserWithLaptopType, WithCompaniesType
 } from './10_01';
 
 
@@ -183,4 +183,31 @@ test('remove js book', () => {
   expect(user.address).toBe(userCopy.address)
   expect(user.books).not.toBe(userCopy.books)
   expect(userCopy.books[2]).toBe('react')
+})
+
+test('add new Company', () => {
+  let user: UserWithLaptopType & WithCompaniesType = {
+    name: 'Briws',
+    hair: 32,
+    address: {
+      city: 'Querim',
+      house: 12
+    },
+    laptop: {
+      title: 'ZenBook'
+    },
+    companies: [
+      {id: 1, title: 'Epam'},
+      {id: 2, title: 'It-incubator'}
+    ]
+  }
+
+  const userCopy = addCompany(user, 3, 'Google');
+
+  expect(user).not.toBe(userCopy)
+  expect(user.laptop).toBe(userCopy.laptop)
+  expect(user.address).toBe(userCopy.address)
+  expect(user.companies).not.toBe(userCopy.companies)
+  expect(userCopy.companies[3]).toStrictEqual({id: 2, title: 'It-incubator'})
+
 })

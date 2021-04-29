@@ -17,6 +17,9 @@ export type UserWithBooksType = UserType & {
 export type UserWithSkillsType = UserType & {
   skills: Array<string>
 }
+export type WithCompaniesType = {
+  companies: Array<{id: number, title: string}>
+}
 
 
 
@@ -81,12 +84,14 @@ export const updateSkill = (u: UserWithSkillsType,
 })
 
 export function removeBook(u: UserWithLaptopType & UserWithBooksType,
-                           bookToRemove: string) {
+                           bookForDelete: string) {
   return {
     ...u,
-    books: u.books.filter(b => b !== bookToRemove)
+    books: u.books.filter(b => b !== bookForDelete)
   }
 }
+
+/*export function addCompany*/
 
 
 
