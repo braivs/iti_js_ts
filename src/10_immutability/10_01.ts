@@ -1,5 +1,3 @@
-import {Simulate} from 'react-dom/test-utils';
-
 export type UserType = {
   name: string
   hair: number
@@ -62,16 +60,19 @@ export function addNewBooksToUser(u: UserWithLaptopType & UserWithBooksType, new
   }
 }
 
-export function updateBook(u: UserWithLaptopType & UserWithBooksType,
+export const updateBook = (u: UserWithLaptopType & UserWithBooksType,
                            oldBook: string,
-                           newBook: string) {
-  const copy = {
+                           newBook: string) => ({
     ...u,
     books: u.books.map(b => (b === oldBook) ? newBook : b)
-  }
+})
 
-  return copy;
-}
+/*
+* Задача:
+* 1. Создать отдельный массив skills level от 0 до 100 - массив чисел, соотвествующим каким то скилам 80, 35, 47, 100
+* 2. Создать функцию обновить скилл, т.е. заменить скилл который например 70% на другое значение. Аналогично функции
+* updateBook
+* */
 
 
 
