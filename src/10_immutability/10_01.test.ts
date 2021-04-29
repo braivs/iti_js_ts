@@ -3,13 +3,12 @@ import {
   addNewBooksToUser,
   makeHairStyle,
   moveUser,
-  moveUserToOtherHouse, removeBook, updateBook, updateCompanyTitle, updateSkill,
+  moveUserToOtherHouse, removeBook, updateBook, updateCompanyTitle, updateCompanyTitle2, updateSkill,
   upgradeUserLaptop,
   UserType,
   UserWithBooksType,
   UserWithLaptopType, WithCompaniesType
 } from './10_01';
-
 
 
 test('reference type test', () => {
@@ -214,7 +213,7 @@ test('add new сompany', () => {
 
 })
 
-test('update company name', () => {
+test('update company', () => {
   let user: UserWithLaptopType & WithCompaniesType = {
     name: 'Briws',
     hair: 32,
@@ -237,5 +236,20 @@ test('update company name', () => {
   expect(user.address).toBe(userCopy.address)
   expect(user.companies).not.toBe(userCopy.companies)
   expect(userCopy.companies[0].title).toBe('EPAM')
+
+})
+
+test('update company associative array', () => {
+  let companies = {
+    'Dimych': [{id: 1, title: 'Епам'}, {id: 2, title: 'It-incubator'}],
+    'Artem': [{id: 2, title: 'It-incubator'}]
+  }
+
+  const copy = updateCompanyTitle2(companies, 'Dimych', 1, 'EPAM')
+
+  expect(copy['Dimych']).not.toBe(companies['Dimych'])
+  expect(copy['Artem']).toBe(companies['Artem'])
+  expect(copy['Dimych'][0].title).toBe('EPAM')
+
 
 })
