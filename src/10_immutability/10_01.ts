@@ -62,6 +62,16 @@ export function addNewBooksToUser(u: UserWithLaptopType & UserWithBooksType, new
   }
 }
 
+export function updateBook(u: UserWithLaptopType & UserWithBooksType, findEl, newEl) {
+  const copy = {
+    ...u,
+    books: [...u.books]
+  }
+  const index = copy.books.findIndex(t => t === findEl);
+  copy.books[index] = newEl;
+  return copy;
+}
+
 
 
 
