@@ -1,3 +1,5 @@
+import {Simulate} from 'react-dom/test-utils';
+
 export type UserType = {
   name: string
   hair: number
@@ -51,6 +53,17 @@ export function upgradeUserLaptop(u: UserWithLaptopType, laptop: string) {
       title: laptop
     }
   }
+}
+
+export function addNewBooksToUser(u: UserWithLaptopType & UserWithBooksType, newBooks: Array<string>) {
+  const copy = {
+    ...u,
+    books: [
+      ...u.books
+    ]
+  }
+  let copy2 = copy.books.concat(newBooks);
+  return copy2
 }
 
 
