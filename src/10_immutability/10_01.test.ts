@@ -161,3 +161,26 @@ test('update skill level', () => {
   expect(userCopy.skills[1]).toBe('55%')
   expect(user.skills.length).toBe(4)
 })
+
+test('remove js book', () => {
+  let user: UserWithLaptopType & UserWithBooksType = {
+    name: 'Briws',
+    hair: 32,
+    address: {
+      city: 'Querim',
+      house: 12
+    },
+    laptop: {
+      title: 'ZenBook'
+    },
+    books: ['css', 'html', 'js', 'react']
+  }
+
+  const userCopy = removeBook(user, 'js')
+
+  expect(user).not.toBe(userCopy)
+  expect(user.laptop).toBe(userCopy.laptop)
+  expect(user.address).toBe(userCopy.address)
+  expect(user.books).not.toBe(userCopy.books)
+  expect(userCopy.books[2]).toBe('react')
+})
