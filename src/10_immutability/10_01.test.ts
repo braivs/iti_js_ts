@@ -95,7 +95,7 @@ test('change user house number', () => {
   expect(userCopy.address.house).toBe(99)
 })
 
-test('add new books to user', () => {
+test('add new book to user', () => {
   let user: UserWithLaptopType & UserWithBooksType = {
     name: 'Briws',
     hair: 32,
@@ -109,12 +109,36 @@ test('add new books to user', () => {
     books: ['css', 'html', 'js', 'react']
   }
 
-  const userCopy = addNewBooksToUser(user, ['ts', 'rest api'])
+  const userCopy = addNewBooksToUser(user, 'ts')
 
   expect(user).not.toBe(userCopy)
   expect(user.laptop).toBe(userCopy.laptop)
   expect(user.address).toBe(userCopy.address)
   expect(user.books).not.toBe(userCopy.books)
-  expect(userCopy.books).toBe(['css', 'html', 'js', 'react', 'ts', 'rest api'])
-  //expect(userCopy.books[5]).toBe('rest api')
+  expect(userCopy.books[4]).toBe('ts')
+  expect(user.books.length).toBe(4)
+})
+
+test('update js to ts', () => {
+  let user: UserWithLaptopType & UserWithBooksType = {
+    name: 'Briws',
+    hair: 32,
+    address: {
+      city: 'Querim',
+      house: 12
+    },
+    laptop: {
+      title: 'ZenBook'
+    },
+    books: ['css', 'html', 'js', 'react']
+  }
+
+  const userCopy = updateBook(user, 'js', 'ts')
+
+  expect(user).not.toBe(userCopy)
+  expect(user.laptop).toBe(userCopy.laptop)
+  expect(user.address).toBe(userCopy.address)
+  expect(user.books).not.toBe(userCopy.books)
+  expect(userCopy.books[2]).toBe('ts')
+  expect(user.books.length).toBe(4)
 })

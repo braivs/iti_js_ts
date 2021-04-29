@@ -55,16 +55,13 @@ export function upgradeUserLaptop(u: UserWithLaptopType, laptop: string) {
   }
 }
 
-export function addNewBooksToUser(u: UserWithLaptopType & UserWithBooksType, newBooks: Array<string>) {
-  const copy = {
+export function addNewBooksToUser(u: UserWithLaptopType & UserWithBooksType, newBook: string) {
+  return {
     ...u,
-    books: [
-      ...u.books
-    ]
+    books: [...u.books, newBook]
   }
-  let copy2 = copy.books.concat(newBooks);
-  return copy2
 }
+
 
 
 
