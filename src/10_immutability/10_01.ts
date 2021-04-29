@@ -20,7 +20,7 @@ export function makeHairStyle(u: UserType, power: number) {
 }
 
 export function moveUser(u: UserWithLaptopType, city: string) {
-  let copy = {
+  return {
     ...u,
     address : {
       ...u.address,
@@ -32,6 +32,14 @@ export function moveUser(u: UserWithLaptopType, city: string) {
     ...u.address,
     city: city
   }*/
+}
 
-  return copy
+export function upgradeUserLaptop(u: UserWithLaptopType, laptopTitle: string) {
+  return {
+    ...u,
+    laptop : {
+      ...u.laptop,
+      title: laptopTitle
+    }
+  }
 }
