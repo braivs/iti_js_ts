@@ -1,4 +1,5 @@
 import {
+  addCompany,
   addNewBooksToUser,
   makeHairStyle,
   moveUser,
@@ -208,6 +209,7 @@ test('add new Company', () => {
   expect(user.laptop).toBe(userCopy.laptop)
   expect(user.address).toBe(userCopy.address)
   expect(user.companies).not.toBe(userCopy.companies)
-  expect(userCopy.companies[3]).toStrictEqual({id: 2, title: 'It-incubator'})
+  expect(userCopy.companies.length).toBe(3);
+  expect(userCopy.companies[2]).toStrictEqual({id: 3, title: 'Google'})
 
 })

@@ -17,8 +17,13 @@ export type UserWithBooksType = UserType & {
 export type UserWithSkillsType = UserType & {
   skills: Array<string>
 }
+
+export type CompanyType = {
+  id: number, title: string
+}
+
 export type WithCompaniesType = {
-  companies: Array<{id: number, title: string}>
+  companies: Array<CompanyType>
 }
 
 
@@ -91,7 +96,20 @@ export function removeBook(u: UserWithLaptopType & UserWithBooksType,
   }
 }
 
-/*export function addCompany*/
+export function addCompany(u: UserWithLaptopType & WithCompaniesType,
+                           newId: number,
+                           newCompanyName: string
+                           ) {
+  const newCompany: CompanyType = {
+    id: newId,
+    title: newCompanyName
+  }
+  const copy = {
+    ...u,
+    companies: [...u.companies, newCompany]
+  }
+  return copy;
+}
 
 
 
