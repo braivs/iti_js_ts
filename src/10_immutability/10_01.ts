@@ -21,13 +21,17 @@ export function makeHairStyle(u: UserType, power: number) {
 
 export function moveUser(u: UserWithLaptopType, city: string) {
   let copy = {
-    ...u
+    ...u,
+    address : {
+      ...u.address,
+      city: city
+    }
   }
 
-  copy.address = {
+/*  copy.address = {
     ...u.address,
     city: city
-  }
+  }*/
 
   return copy
 }
