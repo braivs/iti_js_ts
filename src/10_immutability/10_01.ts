@@ -111,12 +111,12 @@ export function addCompany(u: UserWithLaptopType & WithCompaniesType,
   return copy;
 }
 
-/*export const updateCompanyTitle = (u: UserWithLaptopType & WithCompaniesType,
-                           oldBook: string,
-                           newBook: string) => ({
+export const updateCompanyTitle = (u: UserWithLaptopType & WithCompaniesType,
+                           idToFind: number,
+                           updatedCompanyName: string) => ({
   ...u,
-  books: u.books.map(b => (b === oldBook) ? newBook : b)
-})*/
+  companies: u.companies.map(c => (c.id === idToFind) ? {id: idToFind, title: updatedCompanyName} : c)
+})
 
 
 
