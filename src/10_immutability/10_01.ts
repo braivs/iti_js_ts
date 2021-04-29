@@ -111,6 +111,13 @@ export function addCompany(u: UserWithLaptopType & WithCompaniesType,
   return copy;
 }
 
+/*export const updateCompanyTitle = (u: UserWithLaptopType & WithCompaniesType,
+                           oldBook: string,
+                           newBook: string) => ({
+  ...u,
+  books: u.books.map(b => (b === oldBook) ? newBook : b)
+})*/
+
 
 
 

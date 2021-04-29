@@ -186,7 +186,7 @@ test('remove js book', () => {
   expect(userCopy.books[2]).toBe('react')
 })
 
-test('add new Company', () => {
+test('add new сompany', () => {
   let user: UserWithLaptopType & WithCompaniesType = {
     name: 'Briws',
     hair: 32,
@@ -211,5 +211,31 @@ test('add new Company', () => {
   expect(user.companies).not.toBe(userCopy.companies)
   expect(userCopy.companies.length).toBe(3);
   expect(userCopy.companies[2]).toStrictEqual({id: 3, title: 'Google'})
+
+})
+
+test('update company name', () => {
+  let user: UserWithLaptopType & WithCompaniesType = {
+    name: 'Briws',
+    hair: 32,
+    address: {
+      city: 'Querim',
+      house: 12
+    },
+    laptop: {
+      title: 'ZenBook'
+    },
+    companies: [
+      {id: 1, title: 'Епам'},
+      {id: 2, title: 'It-incubator'}
+    ]
+  }
+
+  const userCopy = updateCompanyTitle(user, 1, 'EPAM')
+
+  expect(user).not.toBe(userCopy)
+  expect(user.address).toBe(userCopy.address)
+  expect(user.companies).not.toBe(userCopy.companies)
+  expect(userCopy.companies[0].title).toBe('EPAM')
 
 })
